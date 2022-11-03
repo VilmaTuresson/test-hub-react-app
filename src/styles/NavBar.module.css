@@ -2,4 +2,10 @@
 
 .Logo {
     font-family: 'Michroma', sans-serif;
+    font-size: 1.8em;
+}
+
+.NavItem {
+    margin-top: 6px;
+    font-size: 1.1em;
 }
