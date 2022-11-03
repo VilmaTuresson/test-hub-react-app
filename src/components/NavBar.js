@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from '../styles/NavBar.module.css'
 import { Navbar, Container, Nav, NavDropdown, FormControl, Form, Button} from 'react-bootstrap'
 
 const NavBar = () => {
   return (
     <Navbar expand="md" fixed="top">
       <Container>
-        <Navbar.Brand href="#">TestHub</Navbar.Brand>
+        <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -13,15 +14,15 @@ const NavBar = () => {
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Account</Nav.Link>
+            <Nav.Link>Home</Nav.Link>
+            <Nav.Link>Account</Nav.Link>
             <NavDropdown title="Posts" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">My Posts</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Liked Posts</NavDropdown.Item>
+              <NavDropdown.Item>My Posts</NavDropdown.Item>
+              <NavDropdown.Item>Liked Posts</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">Create new Post</NavDropdown.Item>
+              <NavDropdown.Item>Create new Post</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
+            <Nav.Link>
               Logout
             </Nav.Link>
           </Nav>
