@@ -1,12 +1,15 @@
-import React from 'react'
-import styles from '../styles/NavBar.module.css'
-import { Navbar, Container, Nav, NavDropdown, FormControl, Form, Button} from 'react-bootstrap'
+import React from 'react';
+import styles from '../styles/NavBar.module.css';
+import { Navbar, Container, Nav, FormControl, Form, Button} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
     <Navbar expand="lg" fixed="top">
       <Container>
+      <NavLink to='/'>
         <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
+      </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -14,17 +17,11 @@ const NavBar = () => {
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
-            <Nav.Link className={styles.NavItem}>Home</Nav.Link>
-            <Nav.Link className={styles.NavItem}>Account</Nav.Link>
-            <NavDropdown className={styles.NavItem} title="Posts" id="navbarScrollingDropdown">
-              <NavDropdown.Item>My Posts</NavDropdown.Item>
-              <NavDropdown.Item>Liked Posts</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item>Create new Post</NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link className={styles.NavItem}>
+            <NavLink to='/' className={styles.NavItem}>Home</NavLink>
+            <NavLink to='/profile' className={styles.NavItem}>Profile</NavLink>
+            <NavLink to='/logout' className={styles.NavItem}>
               Logout
-            </Nav.Link>
+            </NavLink>
           </Nav>
           <Form className="d-flex">
             <FormControl

@@ -3,9 +3,22 @@
 .Logo {
     font-family: 'Michroma', sans-serif;
     font-size: 1.8em;
+    margin-right: 30px;
 }
 
 .NavItem {
-    margin-top: 6px;
-    font-size: 1.1em;
+    margin-top: 8px;
+    font-size: 1.3em;
+    color: rgb(102, 101, 101);
+    margin-right: 15px;
+}
+
+.NavItem:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.NavItem .Active {
+    color: black;
+    border-bottom: 2px solid black;
 }
