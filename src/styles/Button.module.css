@@ -1,0 +1,15 @@
+.FormButton {
+    width: 40%;
+    margin-left: 30%;
+    background: #e7f5d9;
+    border: 1px solid #8ca088;
+    color: black;
+    margin-top: 10px;
+}
+
+.FormButton:hover {
+    border: 1px solid #8ca088;
+    background-color: white;
+    color: black;
+}
+

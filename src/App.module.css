@@ -8,3 +8,10 @@
 .Main {
     padding-top: 100px;
 }
+
+.Content {
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(102, 101, 101);
+    margin-top: 20px;
+}

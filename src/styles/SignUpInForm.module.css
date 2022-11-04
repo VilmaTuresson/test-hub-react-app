@@ -1,0 +1,55 @@
+
+.Container {
+    max-width: 60%;
+}
+
+.Input {
+    text-align: center;
+    border: 1px solid #8ca088;
+}
+
+.Header {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+.LinkContainer {
+    background-color: #e7f5d9;
+}
+
+.Link {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    display: block;
+}
+
+.Link:hover {
+    color: black;
+}
+
+/* media queries */
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .Container {
+        max-width: 90%;
+    }
+
+    .Header {
+        font-size: 1.4em;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .Container {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .Container {
+        max-width: 80%;
+    }
+}
+
