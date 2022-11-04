@@ -19,8 +19,11 @@ const NavBar = () => {
           >
             <NavLink to='/' className={styles.NavItem}>Home</NavLink>
             <NavLink to='/profile' className={styles.NavItem}>Profile</NavLink>
-            <NavLink to='/logout' className={styles.NavItem}>
-              Logout
+            <NavLink to='/login' className={styles.NavItem}>
+              Login
+            </NavLink>
+            <NavLink to='/register' className={styles.NavItem}>
+              Register
             </NavLink>
           </Nav>
           <Form className="d-flex">
