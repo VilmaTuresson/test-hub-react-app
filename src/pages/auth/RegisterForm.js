@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import { Col, Container, Row, Form, Button, Alert } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
+import axios from "axios"; 
+
 import appStyles from '../../App.module.css';
 import styles from '../../styles/SignUpInForm.module.css';
 import buttonStyles from '../../styles/Button.module.css';
-import axios from "axios"; 
+
 
 const RegisterForm = () => {
 
