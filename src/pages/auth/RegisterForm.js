@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import appStyles from '../../App.module.css';
 import styles from '../../styles/SignUpInForm.module.css';
 import buttonStyles from '../../styles/Button.module.css';
-import axios from "axios";
+import axios from "axios"; 
 
 const RegisterForm = () => {
 
@@ -99,7 +99,7 @@ const RegisterForm = () => {
                             Sign Up
                         </Button>
                         {errors.non_field_errors?.map((message, idx) => (
-                            <Alert variant="warning" key={idx} className='mt-3'>
+                            <Alert variant="warning" key={idx} className='mt-3' active>
                                 {message}
                             </Alert>
                         ))}

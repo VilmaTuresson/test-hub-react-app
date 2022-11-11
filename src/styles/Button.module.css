@@ -7,9 +7,24 @@
     margin-top: 10px;
 }
 
+.FormButton:active {
+    border: 1px solid #8ca088 !important;
+    background-color: white !important;
+    color: black!important;
+}
+
 .FormButton:hover {
     border: 1px solid #8ca088;
     background-color: white;
     color: black;
 }
 
+.FormButton:focus {
+    box-shadow: none !important;
+    width: 40%;
+    margin-left: 30%;
+    background: #e7f5d9;
+    border: 1px solid #8ca088;
+    color: black;
+    margin-top: 10px;
+}

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   return (
-    <Navbar expand="lg" fixed="top">
+    <Navbar expand="lg" fixed="top" className={styles.NavBar}>
       <Container>
       <NavLink to='/'>
         <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
