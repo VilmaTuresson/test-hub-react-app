@@ -5,7 +5,8 @@
 
 .Input {
     text-align: center;
-    border: 1px solid #8ca088;
+    border: 1px solid #8ca088 !important;
+    box-shadow: none !important;
 }
 
 .Header {
