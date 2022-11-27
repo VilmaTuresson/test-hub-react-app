@@ -1,19 +1,43 @@
-import React from 'react';
-import styles from '../styles/NavBar.module.css';
-import { Navbar, Container, Nav, FormControl, Form, Button} from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
-import { useCurrentUser } from '../contexts/CurrentUserContext';
+import React from "react";
+import styles from "../styles/NavBar.module.css";
+import {
+  Navbar,
+  Container,
+  Nav,
+  FormControl,
+  Form,
+  Button,
+} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import {
+  useCurrentUser,
+  useSetCurrentUser,
+} from "../contexts/CurrentUserContext";
+import axios from "axios";
 
 const NavBar = () => {
+  const currentUser = useCurrentUser();
+  const setCurrentUser = useSetCurrentUser();
 
-  const currentUser= useCurrentUser();
+  const handleLogout = async () => {
+    try {
+      await axios.post("dj-rest-auth/logout/");
+      setCurrentUser(null);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const LoggedInLinks = (
     <>
-      <NavLink to='/profile' className={styles.NavItem}>
+      <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.NavItem}
+      >
         Profile
       </NavLink>
-      <NavLink to='/' className={styles.NavItem}>
+
+      <NavLink to="/" className={styles.NavItem} onClick={handleLogout}>
         Logout
       </NavLink>
     </>
@@ -21,10 +45,10 @@ const NavBar = () => {
 
   const loggedOutLinks = (
     <>
-      <NavLink to='/login' className={styles.NavItem}>
+      <NavLink to="/login" className={styles.NavItem}>
         Login
       </NavLink>
-      <NavLink to='/register' className={styles.NavItem}>
+      <NavLink to="/register" className={styles.NavItem}>
         Register
       </NavLink>
     </>
@@ -33,17 +57,19 @@ const NavBar = () => {
   return (
     <Navbar expand="lg" fixed="top" className={styles.NavBar}>
       <Container>
-        <NavLink to='/'>
+        <NavLink to="/">
           <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
         </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="mr-auto my-2 my-lg-0"
-            style={{ maxHeight: '500px' }}
+            style={{ maxHeight: "500px" }}
             navbarScroll
           >
-            <NavLink to='/' className={styles.NavItem}>Home</NavLink>
+            <NavLink to="/" className={styles.NavItem}>
+              Home
+            </NavLink>
             {currentUser ? LoggedInLinks : loggedOutLinks}
           </Nav>
           <Form className="d-flex">
@@ -58,7 +84,7 @@ const NavBar = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
