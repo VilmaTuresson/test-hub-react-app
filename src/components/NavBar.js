@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from '../styles/NavBar.module.css';
 import { Navbar, Container, Nav, FormControl, Form, Button} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import { CurrentUserContext } from '../App';
 
 const NavBar = () => {
+
+  const currentUser= useContext(CurrentUserContext);
+
+  const LoggedInLinks = (
+    <>
+      <NavLink to='/profile' className={styles.NavItem}>
+        Profile
+      </NavLink>
+      <NavLink to='/' className={styles.NavItem}>
+        Logout
+      </NavLink>
+    </>
+  );
+
+  const loggedOutLinks = (
+    <>
+      <NavLink to='/login' className={styles.NavItem}>
+        Login
+      </NavLink>
+      <NavLink to='/register' className={styles.NavItem}>
+        Register
+      </NavLink>
+    </>
+  );
+
   return (
     <Navbar expand="lg" fixed="top" className={styles.NavBar}>
       <Container>
-      <NavLink to='/'>
-        <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
-      </NavLink>
+        <NavLink to='/'>
+          <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -18,13 +44,7 @@ const NavBar = () => {
             navbarScroll
           >
             <NavLink to='/' className={styles.NavItem}>Home</NavLink>
-            <NavLink to='/profile' className={styles.NavItem}>Profile</NavLink>
-            <NavLink to='/login' className={styles.NavItem}>
-              Login
-            </NavLink>
-            <NavLink to='/register' className={styles.NavItem}>
-              Register
-            </NavLink>
+            {currentUser ? LoggedInLinks : loggedOutLinks}
           </Nav>
           <Form className="d-flex">
             <FormControl
