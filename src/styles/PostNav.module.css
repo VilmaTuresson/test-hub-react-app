@@ -1,0 +1,37 @@
+.BtnGroup {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.Btn {
+    background-color: #fff;
+    color: black;
+    border: 1px solid #8ca088 !important;
+}
+
+.Btn:hover {
+    background-color: #e7f5d9;
+    color: black;
+    border: 1px solid #8ca088 !important;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+    .BtnGroup {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .Btn {
+        background-color: #fff;
+        color: black;
+        border: 1px solid #8ca088 !important;
+        font-size: x-small;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .BtnGroup {
+        width: 90%;
+        margin-left: 5%;
+    }
+}
