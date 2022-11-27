@@ -1,5 +1,7 @@
-import React from "react";
 import styles from "../styles/NavBar.module.css";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import {
   Navbar,
   Container,
@@ -8,16 +10,16 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import axios from "axios";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleLogout = async () => {
     try {
@@ -55,12 +57,21 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar expand="lg" fixed="top" className={styles.NavBar}>
+    <Navbar
+      expanded={expanded}
+      expand="lg"
+      fixed="top"
+      className={styles.NavBar}
+    >
       <Container>
         <NavLink to="/">
           <Navbar.Brand className={styles.Logo}>TestHub</Navbar.Brand>
         </NavLink>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Toggle
+          ref={ref}
+          onClick={() => setExpanded(!expanded)}
+          aria-controls="navbarScroll"
+        />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             className="mr-auto my-2 my-lg-0"
