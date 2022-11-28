@@ -7,6 +7,7 @@ import RegisterForm from "./pages/auth/RegisterForm";
 import LoginForm from "./pages/auth/LoginForm";
 import PostNav from "./components/PostNav";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
+import CreatePostForm from "./pages/posts/CreatePostForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/profile" render={() => <h1>Profile</h1>} />
           <Route exact path="/login" render={() => <LoginForm />} />
           <Route exact path="/register" render={() => <RegisterForm />} />
+          <Route exact path="/posts/create" render={() => <CreatePostForm />} />
         </Switch>
       </Container>
     </div>
