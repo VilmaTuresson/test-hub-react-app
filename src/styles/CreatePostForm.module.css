@@ -1,0 +1,27 @@
+.Form {
+  width: 100%;
+  margin-top: 50px;
+  height: 550px;
+  border: 1px solid #8ca088;
+  border-radius: 5px;
+  background-color: #e7f5d9;
+}
+
+.FormImg {
+  height: 500px;
+  width: 90%;
+  border: 1px solid #8ca088;
+  border-radius: 5px;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 5%;
+  background-color: #ffffff;
+}
+
+.FormInputs {
+  margin: 5%;
+}
+
+.FromLabels {
+  text-align: center;
+}
