@@ -6,13 +6,16 @@ import "./api/axiosDefaults";
 import RegisterForm from "./pages/auth/RegisterForm";
 import LoginForm from "./pages/auth/LoginForm";
 import PostNav from "./components/PostNav";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
+
   return (
     <div className={styles.App}>
       <NavBar />
       <Container className={styles.Main}>
-        <PostNav />
+        {currentUser && <PostNav />}
         <Switch>
           <Route exact path="/" render={() => <></>} />
           <Route exact path="/profile" render={() => <h1>Profile</h1>} />
