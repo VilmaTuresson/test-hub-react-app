@@ -8,6 +8,7 @@ import LoginForm from "./pages/auth/LoginForm";
 import PostNav from "./components/PostNav";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import CreatePostForm from "./pages/posts/CreatePostForm";
+import PostPage from "./pages/posts/PostPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/login" render={() => <LoginForm />} />
           <Route exact path="/register" render={() => <RegisterForm />} />
           <Route exact path="/posts/create" render={() => <CreatePostForm />} />
+          <Route exact path="/posts/:id" render={() => <PostPage />} />
         </Switch>
       </Container>
     </div>
