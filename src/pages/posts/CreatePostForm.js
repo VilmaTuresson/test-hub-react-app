@@ -80,6 +80,11 @@ const CreatePostForm = () => {
           onChange={handleChange}
         ></Form.Control>
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Content</Form.Label>
@@ -91,6 +96,11 @@ const CreatePostForm = () => {
           onChange={handleChange}
         ></Form.Control>
       </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Link to deployed site</Form.Label>
@@ -101,6 +111,11 @@ const CreatePostForm = () => {
           onChange={handleChange}
         ></Form.Control>
       </Form.Group>
+      {errors?.link1?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Form.Group>
         <Form.Label>Additional links</Form.Label>
@@ -111,6 +126,11 @@ const CreatePostForm = () => {
           onChange={handleChange}
         ></Form.Control>
       </Form.Group>
+      {errors?.link2?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Button
         className={BtnStyles.PostFormBtn}
@@ -159,6 +179,11 @@ const CreatePostForm = () => {
                 ref={imageInput}
               />
             </Form.Group>
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
           </Container>
         </Col>
         <Col>
