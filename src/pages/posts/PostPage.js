@@ -5,6 +5,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import appStyles from "../../App.module.css";
+import Post from "./Post";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -29,9 +30,13 @@ const PostPage = () => {
   return (
     <Row className="h-100">
       <Col>
+        <Container className={appStyles.Content}>
+          <Post {...post.results[0]} setPost={setPost} postPage />
+        </Container>
+      </Col>
+      <Col>
         <Container className={appStyles.Content}>Comments</Container>
       </Col>
-      <Col></Col>
     </Row>
   );
 };
