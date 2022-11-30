@@ -1,0 +1,30 @@
+.Img {
+  max-width: 50%;
+  height: auto;
+}
+
+.mainContainer {
+  text-align: center;
+  border: 1px solid #8ca088;
+}
+
+.icons {
+  margin: 10px;
+  color: black;
+}
+
+.UserName {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
+}
+
+.UserName:hover {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  font-weight: 300;
+  text-align: center;
+  text-decoration: none;
+}

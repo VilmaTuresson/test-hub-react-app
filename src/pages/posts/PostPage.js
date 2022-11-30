@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
-import appStyles from "../../App.module.css";
+import styles from "../../styles/PostPage.module.css";
 import Post from "./Post";
 
 const PostPage = () => {
@@ -29,13 +29,9 @@ const PostPage = () => {
 
   return (
     <Row className="h-100">
+      <Post {...post.results[0]} setPost={setPost} postPage />
       <Col>
-        <Container className={appStyles.Content}>
-          <Post {...post.results[0]} setPost={setPost} postPage />
-        </Container>
-      </Col>
-      <Col>
-        <Container className={appStyles.Content}>Comments</Container>
+        <Container className={styles.CommentSection}>Comments</Container>
       </Col>
     </Row>
   );
