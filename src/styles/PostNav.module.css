@@ -5,20 +5,20 @@
 }
 
 .Btn {
-    background-color: #fff;
+    background-color: #e7f5d9;
     color: black;
-    border: 1px solid #8ca088 !important;
+    border: 1px solid #677664 !important;
 }
 
 .Btn:focus {
     color: black;
     text-decoration: none;
     box-shadow: none !important;
-    background-color: #e7f5d9 !important;
+    background-color: #fff !important;
 }
 
 .Btn:hover {
-    background-color: #e7f5d9 !important;
+    background-color: #fff !important;
 }
 
 .NavLink {
@@ -49,9 +49,9 @@
     }
 
     .Btn {
-        background-color: #fff;
+        background-color: #e7f5d9;
         color: black;
-        border: 1px solid #8ca088 !important;
+        border: 1px solid #677664 !important;
         font-size: x-small;
     }
 }
