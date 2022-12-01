@@ -9,9 +9,11 @@ import PostNav from "./components/PostNav";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import CreatePostForm from "./pages/posts/CreatePostForm";
 import PostPage from "./pages/posts/PostPage";
+import PostFeed from "./pages/posts/PostFeed";
 
 function App() {
   const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
 
   return (
     <div className={styles.App}>
@@ -19,7 +21,17 @@ function App() {
       <Container className={styles.Main}>
         {currentUser && <PostNav />}
         <Switch>
-          <Route exact path="/" render={() => <></>} />
+          <Route
+            exact
+            path="/liked"
+            render={() => (
+              <PostFeed
+                message="No results found. You haven't liked post yet!"
+                filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              />
+            )}
+          />
+          <Route exact path="/" render={() => <PostFeed />} />
           <Route exact path="/profile" render={() => <h1>Profile</h1>} />
           <Route exact path="/login" render={() => <LoginForm />} />
           <Route exact path="/register" render={() => <RegisterForm />} />
