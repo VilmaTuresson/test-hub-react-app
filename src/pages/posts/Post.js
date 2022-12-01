@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { Link } from "react-router-dom";
+import { axiosRes } from "../../api/axiosDefaults";
 import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Post.module.css";
@@ -23,12 +23,12 @@ const Post = (props) => {
     setPosts,
   } = props;
 
-  const currentUser = useCurrentUser;
+  const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosReq.post("/likes/", { post: id });
+      const { data } = await axiosRes.post("/likes/", { post: id });
       setPosts((prevPosts) => ({
         ...prevPosts,
         results: prevPosts.results.map((post) => {
@@ -59,12 +59,12 @@ const Post = (props) => {
   };
 
   return (
-    <Card className={styles.mainContainer}>
+    <Card className={styles.Post}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} />
-            <span className={styles.UserName}>{owner}</span>
+            <Avatar src={profile_image} height={55} />
+            {owner}
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
@@ -73,18 +73,18 @@ const Post = (props) => {
         </Media>
       </Card.Body>
       <Link to={`/posts/${id}`}>
-        <Card.Img src={image} alt={title} className={styles.Img} />
+        <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
         {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {content && <Card.Text className="text-center">{content}</Card.Text>}
-        <div>
+        {content && <Card.Text>{content}</Card.Text>}
+        <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
-              <i className={`fa-solid fa-heart ${styles.icons}`}></i>
+              <i className={`fa-regular fa-heart ${styles.icons}`}></i>
             </OverlayTrigger>
           ) : like_id ? (
             <span onClick={handleUnlike}>
@@ -97,14 +97,14 @@ const Post = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like post!</Tooltip>}
+              overlay={<Tooltip>Log in to like posts!</Tooltip>}
             >
               <i className={`fa-regular fa-heart ${styles.icons}`}></i>
             </OverlayTrigger>
           )}
           {likes_count}
           <Link to={`/posts/${id}`}>
-            <i className={`far fa-comments ${styles.icons}`} />
+            <i className={`far fa-comments ${styles.icons}`}></i>
           </Link>
           {comments_count}
         </div>

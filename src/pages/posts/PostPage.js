@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/PostPage.module.css";
@@ -28,10 +28,9 @@ const PostPage = () => {
   }, [id]);
 
   return (
-    <Row className="h-100">
-      <Post {...post.results[0]} setPost={setPost} postPage />
-      <Col>
-        <Container className={styles.CommentSection}>Comments</Container>
+    <Row className={styles.MainContainer}>
+      <Col className="py-2 p-0 p-lg-2" lg={8}>
+        <Post {...post.results[0]} setPosts={setPost} postPage />
       </Col>
     </Row>
   );
