@@ -23,6 +23,13 @@ function App() {
         <Switch>
           <Route
             exact
+            path="/"
+            render={() => (
+              <PostFeed message="No results found." />
+            )}
+          />
+          <Route
+            exact
             path="/liked"
             render={() => (
               <PostFeed
