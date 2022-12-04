@@ -1,0 +1,33 @@
+.PostMenu {
+  display: inline-block;
+  max-width: 50%;
+  padding: 0px;
+}
+
+.PostMenu:focus {
+  background-color: white !important;
+}
+
+.Position {
+  position: absolute;
+  right: 0;
+  z-index: 99;
+}
+
+.Menu {
+  margin-left: 10px;
+}
+
+.Icons {
+  color: black;
+}
+
+.Icons:active {
+  color: #5d695b !important;
+  background-color: white !important;
+}
+
+.Icons:focus {
+  color: #5d695b !important;
+  background-color: white !important;
+}
