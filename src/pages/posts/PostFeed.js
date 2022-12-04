@@ -6,6 +6,8 @@ import Post from "../posts/Post";
 import Asset from "../../components/Asset";
 import NoResults from "../../assets/no-results.png";
 import PostStyles from "../../styles/PostPage.module.css";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 const PostFeed = ({ message, filter = "" }) => {
   const [posts, setPosts] = useState({ results: [] });
@@ -33,9 +35,15 @@ const PostFeed = ({ message, filter = "" }) => {
         {hasLoaded ? (
           <>
             {posts.results.length ? (
-              posts.results.map((post) => (
-                <Post key={post.id} {...post} setPosts={setPosts} />
-              ))
+              <InfiniteScroll
+                children={posts.results.map((post) => (
+                  <Post key={post.id} {...post} setPosts={setPosts} />
+                ))}
+                dataLength={posts.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!posts.next}
+                next={() => fetchMoreData(posts, setPosts)}
+              />
             ) : (
               <Container>
                 <Asset src={NoResults} message={message} />
