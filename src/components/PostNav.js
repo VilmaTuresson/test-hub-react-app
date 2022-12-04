@@ -1,29 +1,27 @@
 import React from "react";
-import { ButtonGroup, Button } from "react-bootstrap";
 import styles from "../styles/PostNav.module.css";
 import { NavLink } from "react-router-dom";
+import { ButtonGroup, Button } from "react-bootstrap";
 
 const PostNav = () => {
   return (
-    <ButtonGroup className={styles.BtnGroup}>
-      <Button className={styles.Btn}>
-        <NavLink className={styles.NavLink} to="/">
-          My posts
-        </NavLink>
-      </Button>
+    <div className={styles.BtnGroup}>
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.ActiveLink}
+        to="/"
+      >
+        <Button className={styles.Btn}>Liked posts</Button>
+      </NavLink>
 
-      <Button className={styles.Btn}>
-        <NavLink className={styles.NavLink} to="/">
-          Liked Posts
-        </NavLink>
-      </Button>
+      <NavLink to="/" className={styles.NavLink}>
+        <Button className={styles.Btn}>My Post</Button>
+      </NavLink>
 
-      <Button className={styles.Btn}>
-        <NavLink className={styles.NavLink} to="/posts/create">
-          Create post
-        </NavLink>
-      </Button>
-    </ButtonGroup>
+      <NavLink to="/posts/create" className={styles.NavLink}>
+        <Button className={styles.Btn}>Create Post</Button>
+      </NavLink>
+    </div>
   );
 };
 

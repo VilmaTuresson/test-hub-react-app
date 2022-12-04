@@ -7,7 +7,10 @@
 .Btn {
     background-color: #e7f5d9;
     color: black;
+    padding: 5px;
+    width: 100%;
     border: 1px solid #677664 !important;
+    border-radius: 5px;
 }
 
 .Btn:focus {
@@ -19,28 +22,32 @@
 
 .Btn:hover {
     background-color: #fff !important;
+    color: black !important;
 }
 
 .NavLink {
     color: black !important;
     text-decoration: none;
+    display: inline-block;
+    width: calc(100% / 3);
+    flex-basis: calc(100% / 3);
+}
+
+.ActiveLink {
+    color: black !important;
 }
 
 .NavLink:hover {
-    color: black;
-    text-decoration: none;
-}
-
-.NavLink:active {
-    color: black;
+    color: black !important;
     text-decoration: none;
 }
 
 .NavLink:focus {
-    color: black;
+    color: black !important;
     text-decoration: none;
     box-shadow: none !important;
 }
+
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .BtnGroup {
