@@ -1,18 +1,18 @@
 import React, { useRef, useState } from "react";
-import styles from "../../styles/CreatePostForm.module.css";
-import BtnStyles from "../../styles/Button.module.css";
 import {
-  Button,
+  Alert,
+  Col,
   Container,
   Form,
   Row,
-  Col,
   Image,
-  Alert,
+  Button,
 } from "react-bootstrap";
-import Asset from "../../components/Asset";
-import Upload from "../../assets/upload.png";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Asset from "../../components/Asset";
+import styles from "../../styles/CreatePostForm.module.css";
+import BtnStyles from "../../styles/Button.module.css";
+import Upload from "../../assets/upload.png";
 import { axiosReq } from "../../api/axiosDefaults";
 
 const CreatePostForm = () => {
@@ -22,11 +22,9 @@ const CreatePostForm = () => {
     title: "",
     content: "",
     image: "",
-    link1: "",
-    link2: "",
   });
 
-  const { title, content, image, link1, link2 } = postData;
+  const { title, content, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -55,8 +53,6 @@ const CreatePostForm = () => {
     formData.append("title", title);
     formData.append("content", content);
     formData.append("image", imageInput.current.files[0]);
-    formData.append("link1", link1);
-    formData.append("link2", link2);
 
     try {
       const { data } = await axiosReq.post("/posts/", formData);
@@ -70,16 +66,17 @@ const CreatePostForm = () => {
   };
 
   const textFields = (
-    <div className={styles.FormInputs}>
+    <div className="text-center">
       <Form.Group>
-        <Form.Label className={styles.FromLabels}>Title</Form.Label>
+        <Form.Label>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
           value={title}
           onChange={handleChange}
-        ></Form.Control>
+        />
       </Form.Group>
+
       {errors?.title?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
@@ -90,43 +87,14 @@ const CreatePostForm = () => {
         <Form.Label>Content</Form.Label>
         <Form.Control
           as="textarea"
-          rows={5}
+          rows={8}
           name="content"
           value={content}
           onChange={handleChange}
-        ></Form.Control>
+        />
       </Form.Group>
+
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
-      <Form.Group>
-        <Form.Label>Link to deployed site</Form.Label>
-        <Form.Control
-          type="text"
-          name="link1"
-          value={link1}
-          onChange={handleChange}
-        ></Form.Control>
-      </Form.Group>
-      {errors?.link1?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-
-      <Form.Group>
-        <Form.Label>Additional links</Form.Label>
-        <Form.Control
-          type="text"
-          name="link2"
-          value={link2}
-          onChange={handleChange}
-        ></Form.Control>
-      </Form.Group>
-      {errors?.link2?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
@@ -145,33 +113,30 @@ const CreatePostForm = () => {
   );
 
   return (
-    <Form onSubmit={handleSubmit} className={styles.Form}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-          <Container>
-            <Form.Group className={styles.FormImg}>
+        <Col
+          className={`py-2 p-0 p-md-2" md={7} lg={8} ${styles.ImageContainer}`}
+        >
+          <Container
+            className={`d-flex flex-column justify-content-center ${styles.Container}`}
+          >
+            <Form.Group className="text-center">
               {image ? (
                 <>
                   <figure>
                     <Image className={styles.Image} src={image} rounded />
                   </figure>
-                  <div>
-                    <Form.Label
-                      className={BtnStyles.FormButton}
-                      htmlFor="image-upload"
-                    >
-                      Upload new image
-                    </Form.Label>
-                  </div>
                 </>
               ) : (
-                <Form.Label htmlFor="image-upload">
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload an image"
-                  />
+                <Form.Label
+                  className="d-flex justify-content-center"
+                  htmlFor="image-upload"
+                >
+                  <Asset src={Upload} message="Upload an image" />
                 </Form.Label>
               )}
+
               <Form.File
                 id="image-upload"
                 accept="image/*"
@@ -184,10 +149,11 @@ const CreatePostForm = () => {
                 {message}
               </Alert>
             ))}
+            <div className="d-md-none">{textFields}</div>
           </Container>
         </Col>
-        <Col>
-          <Container>{textFields}</Container>
+        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+          <Container className={styles.Container}>{textFields}</Container>
         </Col>
       </Row>
     </Form>

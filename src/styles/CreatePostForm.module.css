@@ -1,38 +1,17 @@
-.Form {
-  width: 100%;
-  margin-top: 50px;
-  height: 550px;
-  border: 1px solid #8ca088;
-  border-radius: 5px;
-  background-color: #e7f5d9;
-}
-
-.FormImg {
-  height: 500px;
-  width: 90%;
-  border: 1px solid #8ca088;
-  border-radius: 5px;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  margin-left: 5%;
+.Container {
+  min-height: 350px;
   background-color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  border: 1px solid #dadadf;
 }
 
-.FormInputs {
-  margin: 5%;
-}
-
-.FromLabels {
-  text-align: center;
-}
-
-figure {
-  text-align: center;
-  display: inline-block;
+.ImageContainer {
+  min-height: 450px;
 }
 
 .Image {
-  max-height: 500px;
-  max-width: 700px;
+  max-height: 40vh;
+  max-width: 100%;
   object-fit: contain;
 }

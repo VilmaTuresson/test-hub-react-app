@@ -7,9 +7,9 @@ import RegisterForm from "./pages/auth/RegisterForm";
 import LoginForm from "./pages/auth/LoginForm";
 import PostNav from "./components/PostNav";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
-import CreatePostForm from "./pages/posts/CreatePostForm";
 import PostPage from "./pages/posts/PostPage";
 import PostFeed from "./pages/posts/PostFeed";
+import CreatePostForm from "./pages/posts/CreatePostForm";
 
 function App() {
   const currentUser = useCurrentUser();
