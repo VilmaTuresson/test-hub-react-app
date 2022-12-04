@@ -23,9 +23,22 @@ function App() {
         <Switch>
           <Route
             exact
-            path="/"
+            path="/posts"
             render={() => (
-              <PostFeed message="No results found." />
+              <PostFeed
+                message="No results found. You're not following anyone yet!"
+                filter={`owner__profile=${profile_id}&`}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <PostFeed
+                message="No results found. You're not following anyone yet!"
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+              />
             )}
           />
           <Route

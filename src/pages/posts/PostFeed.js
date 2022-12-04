@@ -7,7 +7,7 @@ import Asset from "../../components/Asset";
 import NoResults from "../../assets/no-results.png";
 import PostStyles from "../../styles/PostPage.module.css";
 
-const PostFeed = (message, filter = "") => {
+const PostFeed = ({ message, filter = "" }) => {
   const [posts, setPosts] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();

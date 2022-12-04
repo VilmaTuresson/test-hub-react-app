@@ -1,6 +1,6 @@
 .BtnGroup {
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 5%;
     margin-bottom: 50px;
 }
 
@@ -29,12 +29,8 @@
     color: black !important;
     text-decoration: none;
     display: inline-block;
-    width: calc(100% / 3);
-    flex-basis: calc(100% / 3);
-}
-
-.ActiveLink {
-    color: black !important;
+    width: calc(100% / 4);
+    flex-basis: calc(100% / 4);
 }
 
 .NavLink:hover {
