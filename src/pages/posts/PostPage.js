@@ -6,6 +6,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import styles from "../../styles/PostPage.module.css";
 import Post from "./Post";
+import Comment from "../comments/Comment";
 import CreateCommentForm from "../comments/CreateCommentForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
@@ -20,10 +21,12 @@ const PostPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }] = await Promise.all([
+        const [{ data: post }, { data: comments }] = await Promise.all([
           axiosReq.get(`/posts/${id}`),
+          axiosReq.get(`/comments/?post=${id}`),
         ]);
         setPost({ results: [post] });
+        setComments(comments);
         console.log(post);
       } catch (err) {
         console.log(err);
@@ -49,6 +52,15 @@ const PostPage = () => {
           ) : comments.results.length ? (
             "Comments"
           ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet!</span>
+          ) : (
+            <span>No comments yet!</span>
+          )}
         </Container>
       </Col>
     </Row>
