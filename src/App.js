@@ -10,6 +10,7 @@ import { useCurrentUser } from "./contexts/CurrentUserContext";
 import PostPage from "./pages/posts/PostPage";
 import PostFeed from "./pages/posts/PostFeed";
 import CreatePostForm from "./pages/posts/CreatePostForm";
+import PostEditForm from "./pages/posts/PostEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -57,6 +58,8 @@ function App() {
           <Route exact path="/register" render={() => <RegisterForm />} />
           <Route exact path="/posts/create" render={() => <CreatePostForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
+          <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+          <Route render={() => <h3>Page not found!</h3>} />
         </Switch>
       </Container>
     </div>
