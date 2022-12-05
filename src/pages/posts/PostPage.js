@@ -50,7 +50,7 @@ const PostPage = () => {
               setComments={setComments}
             />
           ) : comments.results.length ? (
-            "Comments"
+            <h4 className={styles.CommentsTitle}>Comments</h4>
           ) : null}
           {comments.results.length ? (
             comments.results.map((comment) => (
