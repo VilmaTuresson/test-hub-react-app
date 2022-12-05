@@ -1,0 +1,29 @@
+.Form {
+  border: none;
+  border-bottom: 1px solid #8ca088;
+}
+
+.Form:active {
+  box-shadow: none !important;
+}
+
+.Button {
+  border: 1px solid #677664 !important;
+  background-color: #e7f5d9 !important;
+  color: black !important;
+  border-radius: 100px;
+  padding: 4px 10px;
+  min-width: 75px;
+  margin-left: 89%;
+  margin-bottom: 15px;
+}
+
+Button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+Button:focus {
+  box-shadow: none !important;
+}
