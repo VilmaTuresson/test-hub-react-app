@@ -10,6 +10,11 @@ h5 {
   margin: 0 0;
 }
 
+.OwnerTitle {
+  color: black;
+  font-weight: bold;
+}
+
 .icons {
   margin: 10px;
   color: black;
