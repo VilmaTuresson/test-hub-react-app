@@ -6,7 +6,7 @@ import Avatar from "../../components/Avatar";
 import styles from "../../styles/CreateCommentForm.module.css";
 
 const CreateCommentForm = (props) => {
-  const { post, setPost, setComments, profileImage, profile_id } = props;
+  const { post, setPost, setComments, profile_img, profile_id } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
@@ -42,9 +42,6 @@ const CreateCommentForm = (props) => {
     <Form className="mt-2" onSubmit={handleSubmit}>
       <Form.Group>
         <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profileImage} />
-          </Link>
           <Form.Control
             className={styles.Form}
             placeholder="Write a comment!"

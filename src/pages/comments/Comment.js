@@ -9,7 +9,7 @@ import styles from "../../styles/Comment.module.css";
 const Comment = (props) => {
   const {
     profile_id,
-    profile_image,
+    profile_img,
     owner,
     created_at,
     content,
@@ -45,7 +45,7 @@ const Comment = (props) => {
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
+          <Avatar src={profile_img} />
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>

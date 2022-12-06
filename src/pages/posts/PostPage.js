@@ -15,7 +15,7 @@ const PostPage = () => {
   const [post, setPost] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
-  const profile_image = currentUser?.profile_image;
+  const profile_img = currentUser?.profile_img;
   const [comments, setComments] = useState({ results: [] });
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const PostPage = () => {
           {currentUser ? (
             <CreateCommentForm
               profile_id={currentUser.profile_id}
-              profileImage={profile_image}
+              profile_img={profile_img}
               post={id}
               setPost={setPost}
               setComments={setComments}
