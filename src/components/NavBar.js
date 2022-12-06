@@ -2,24 +2,23 @@ import styles from "../styles/NavBar.module.css";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
-import {
-  Navbar,
-  Container,
-  Nav,
-  FormControl,
-  Form,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
+import { axiosReq } from "../api/axiosDefaults";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
 
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
+
+  const [profiles, setProfiles] = useState({ results: [] });
+  const [query, setQuery] = useState("");
 
   const handleLogout = async () => {
     try {
@@ -29,6 +28,26 @@ const NavBar = () => {
       console.log(err);
     }
   };
+
+  const handleSetQuery = (event) => {
+    console.log(setQuery);
+  };
+
+  
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const { data } = await axiosReq.get(`/profiles/?search=${query}`);
+        setProfiles(data);
+      } catch (err) {
+        console.log(err);
+      }
+      console.log(profiles);
+    };
+
+    fetchProfile();
+  }, [query]);
 
   const LoggedInLinks = (
     <>
@@ -83,14 +102,16 @@ const NavBar = () => {
             </NavLink>
             {currentUser ? LoggedInLinks : loggedOutLinks}
           </Nav>
-          <Form className="d-flex">
-            <FormControl
-              type="search"
+          <Form onSubmit={(event) => event.preventDefault()} className="d-flex">
+            <Form.Control
+              type="text"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
               placeholder="Search Profiles"
               className="mr-2"
               aria-label="Search"
             />
-            <Button variant="outline-secondary">Search</Button>
+            <Button className={styles.SearchBtn}>Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
