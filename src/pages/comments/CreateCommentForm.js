@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
-import Avatar from "../../components/Avatar";
 import styles from "../../styles/CreateCommentForm.module.css";
 
 const CreateCommentForm = (props) => {
-  const { post, setPost, setComments, profile_img, profile_id } = props;
+  const { post, setPost, setComments } = props;
   const [content, setContent] = useState("");
 
   const handleChange = (event) => {
