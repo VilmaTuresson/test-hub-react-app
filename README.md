@@ -178,7 +178,7 @@ The Avatar component did not render in the head of the post.
 - Solution: Properly destructure props in component.
 
 The Avatar component did not render in the comment form.
-- Solution: 
+- Solution: Add profile_img field to comment serializer in API
 
 ### Unfixed bugs
 No unfixed bugs remain.
