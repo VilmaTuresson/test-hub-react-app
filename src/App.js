@@ -11,6 +11,8 @@ import PostPage from "./pages/posts/PostPage";
 import PostFeed from "./pages/posts/PostFeed";
 import CreatePostForm from "./pages/posts/CreatePostForm";
 import PostEditForm from "./pages/posts/PostEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
+import SuccessfulDelete from "./components/SuccessfulDelete";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -27,7 +29,7 @@ function App() {
             path="/posts"
             render={() => (
               <PostFeed
-                message="No results found. You're not following anyone yet!"
+                message="No results found. You haven't created any posts yet!"
                 filter={`owner__profile=${profile_id}&`}
               />
             )}
@@ -59,6 +61,8 @@ function App() {
           <Route exact path="/posts/create" render={() => <CreatePostForm />} />
           <Route exact path="/posts/:id" render={() => <PostPage />} />
           <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route exact path="/deleted" render={() => <SuccessfulDelete />} />
           <Route render={() => <h3>Page not found!</h3>} />
         </Switch>
       </Container>
