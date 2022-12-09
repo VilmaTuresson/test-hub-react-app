@@ -4,6 +4,11 @@
   margin-bottom: 60px;
 }
 
+.PostContainer {
+  width: 90%;
+  margin-left: 5%;
+}
+
 .ProfileImg {
   object-fit: cover;
   height: 225px;
@@ -20,7 +25,6 @@
 }
 
 .ProfileFollowInfo {
-  justify-content: center;
   margin-right: 10px;
 }
 
@@ -48,4 +52,8 @@
   background: white !important;
   color: black !important;
   border: 1px solid #8ca088 !important;
+}
+
+.NoResultsImg {
+  text-align: center;
 }

@@ -65,6 +65,11 @@ const CreatePostForm = () => {
     }
   };
 
+  // const handleClick = () => {
+  //   let DisabledBtn = document.getElementById("CreateBtn");
+  //   DisabledBtn.disabled = true;
+  // };
+
   const textFields = (
     <div className="text-center">
       <Form.Group>
@@ -106,7 +111,7 @@ const CreatePostForm = () => {
       >
         Cancel
       </Button>
-      <Button className={BtnStyles.PostFormBtn} type="submit">
+      <Button id="CreateBtn" className={BtnStyles.PostFormBtn} type="submit">
         Create
       </Button>
     </div>

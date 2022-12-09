@@ -1,0 +1,24 @@
+.Container {
+  width: 90%;
+}
+ 
+.FollowBtn {
+  background: #e7f5d9;
+  color: black;
+  border: 1px solid #8ca088;
+  border-radius: 10px;
+  margin-right: 15% !important;
+  margin-top: 10px;
+}
+
+.FollowBtn:hover {
+  background: white;
+  color: black;
+  border: 1px solid #8ca088;
+}
+
+.FollowBtn:focus {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #8ca088 !important;
+}

@@ -3,7 +3,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
   useProfileData,
@@ -12,13 +12,14 @@ import {
 import InfiniteScroll from "react-infinite-scroll-component";
 import Post from "../posts/Post";
 import { fetchMoreData } from "../../utils/utils";
+import NoResults from "../../assets/no-results.png";
 
 const ProfilePage = () => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [profilePosts, setProfilePosts] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
-  const setProfileData = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
   const { id } = useParams();
 
@@ -77,11 +78,17 @@ const ProfilePage = () => {
           {currentUser &&
             !is_owner &&
             (profile?.following_id ? (
-              <Button className={styles.FollowBtn} onClick={() => {}}>
+              <Button
+                className={styles.FollowBtn}
+                onClick={() => handleUnfollow(profile)}
+              >
                 unfollow
               </Button>
             ) : (
-              <Button className={styles.FollowBtn} onClick={() => {}}>
+              <Button
+                className={styles.FollowBtn}
+                onClick={() => handleFollow(profile)}
+              >
                 follow
               </Button>
             ))}
@@ -94,7 +101,7 @@ const ProfilePage = () => {
   );
 
   const mainPosts = (
-    <>
+    <div className={styles.PostContainer}>
       {profilePosts.results.length ? (
         <InfiniteScroll
           children={profilePosts.results.map((post) => (
@@ -106,11 +113,11 @@ const ProfilePage = () => {
           next={() => fetchMoreData(profilePosts, setProfilePosts)}
         />
       ) : (
-        <Asset
-          message={`No results found, ${profile?.owner} hasn't posted anything yet`}
-        />
+        <div className={styles.NoResultsImg}>
+          <Asset src={NoResults} message={"No results found."} />
+        </div>
       )}
-    </>
+    </div>
   );
 
   return (
