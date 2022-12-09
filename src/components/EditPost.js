@@ -27,7 +27,7 @@ export const EditPost = ({ handleEdit, handleDelete }) => {
           onClick={handleEdit}
           aria-label="edit"
         >
-          <i class={`fa-regular fa-pen-to-square ${styles.Icons}`}></i>
+          <i className={`fa-regular fa-pen-to-square ${styles.Icons}`}></i>
         </Dropdown.Item>
 
         <Dropdown.Item
